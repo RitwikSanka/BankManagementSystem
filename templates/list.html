@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<table class="table table-striped table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Account No</th>
+      <th>Name</th>
+      <th>Balance</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for acc in accounts %}
+    <tr>
+      <td>{{ acc.accNo }}</td>
+      <td>{{ acc.name }}</td>
+      <td>₹ {{ acc.balance }}</td>
+      <td>
+        <form method="POST" action="/delete/{{ acc.accNo }}" style="display:inline;">
+          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        </form>
+        <a href="/deposit/{{ acc.accNo }}" class="btn btn-sm btn-success">Deposit</a>
+        <a href="/withdraw/{{ acc.accNo }}" class="btn btn-sm btn-warning">Withdraw</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">All Accounts</h2>
+    <div>
+        <a href="{{ url_for('create') }}" class="btn btn-primary me-2">➕ Create Account</a>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">🏠 Go to Homepage</a>
+    </div>
+</div>
+
+</table>
+{% endblock %}

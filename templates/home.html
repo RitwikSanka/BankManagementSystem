@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="mb-4">Welcome to the Bank Management System</h1>
+    <p class="lead">Manage accounts with ease — deposit, withdraw, view and create accounts.</p>
+
+    <div class="d-grid gap-3 col-6 mx-auto mt-4">
+        <a href="{{ url_for('create') }}" class="btn btn-primary btn-lg">➕ Create Account</a>
+        <a href="{{ url_for('list_accounts') }}" class="btn btn-success btn-lg">📋 View All Accounts</a>
+    </div>
+</div>
+{% endblock %}
